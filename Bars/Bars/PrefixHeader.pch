@@ -1,0 +1,19 @@
+//
+//  PrefixHeader.pch
+//  Bars
+//
+//  Created by Djuro Alfirevic on 7/23/15.
+//  Copyright (c) 2015 Djuro Alfirevic. All rights reserved.
+//
+
+#ifndef Bars_PrefixHeader_pch
+#define Bars_PrefixHeader_pch
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <CoreData/CoreData.h>
+#import "Constants.h"
+
+#endif
