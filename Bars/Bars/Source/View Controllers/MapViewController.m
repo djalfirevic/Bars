@@ -20,15 +20,13 @@
 
 #pragma mark - Private API
 
-- (void)addAnnotations
-{
+- (void)addAnnotations {
     for (DBBar *bar in [self.dataManager bars]) {
         [self.mapView addAnnotation:bar];
     }
 }
 
-- (void)zoomMapAtLocation:(CLLocation *)location
-{
+- (void)zoomMapAtLocation:(CLLocation *)location {
     if (!self.mapZoomed) {
         [self.mapView setRegion:MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(0.05f, 0.05f))
                        animated:YES];
@@ -39,22 +37,19 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.dataManager.delegate = self;
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
+- (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - DataManagerDelegate
 
-- (void)dataManagerPreparedData
-{
+- (void)dataManagerPreparedData {
     [self addAnnotations];
     [self zoomMapAtLocation:self.dataManager.userLocation];
 }

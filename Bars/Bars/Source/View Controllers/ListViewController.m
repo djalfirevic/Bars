@@ -18,8 +18,7 @@
 
 #pragma mark - Properties
 
-- (NSArray *)itemsArray
-{
+- (NSArray *)itemsArray {
     if (!_itemsArray) {
         _itemsArray = [self.dataManager bars];
     }
@@ -29,27 +28,23 @@
 
 #pragma mark - Actions
 
-- (IBAction)closeButtonTapped
-{
+- (IBAction)closeButtonTapped {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark - View lifecycle
 
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
+- (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.itemsArray.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BarCell" forIndexPath:indexPath];
     
     DBBar *bar = [self.itemsArray objectAtIndex:indexPath.row];
@@ -62,8 +57,7 @@
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

@@ -18,8 +18,7 @@
 
 #pragma mark - Public API
 
-+ (WebServiceManager *)sharedInstance
-{
++ (WebServiceManager *)sharedInstance {
     static WebServiceManager *sharedManager;
     
     @synchronized(self)	{
@@ -31,8 +30,7 @@
 	return sharedManager;
 }
 
-- (BOOL)hasInternetConnection
-{
+- (BOOL)hasInternetConnection {
 	Reachability *reach		= [Reachability reachabilityForInternetConnection];
 	NetworkStatus status	= [reach currentReachabilityStatus];
 	
@@ -44,8 +42,7 @@
 }
 
 - (void)requestBarsNearLocation:(CLLocation *)location
-            withCompletionBlock:(void(^)(BOOL success, NSError *error))completion
-{
+            withCompletionBlock:(void(^)(BOOL success, NSError *error))completion {
     if (![self hasInternetConnection]) {
         if (completion){
             completion(NO, nil);

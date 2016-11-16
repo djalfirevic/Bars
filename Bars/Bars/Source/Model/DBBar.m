@@ -18,18 +18,15 @@
 
 #pragma mark - MKAnnotation
 
-- (NSString *)title
-{
+- (NSString *)title {
     return self.name;
 }
 
-- (NSString *)subtitle
-{
+- (NSString *)subtitle {
     return [NSString stringWithFormat:@"Checkins No. - %d", [self.checkinsCount intValue]];
 }
 
-- (CLLocationCoordinate2D)coordinate
-{
+- (CLLocationCoordinate2D)coordinate {
     return CLLocationCoordinate2DMake([self.latitude floatValue], [self.longitude floatValue]);
 }
 

@@ -21,8 +21,7 @@
 
 #pragma mark - Properties
 
-- (void)setUserLocation:(CLLocation *)userLocation
-{
+- (void)setUserLocation:(CLLocation *)userLocation {
     _userLocation = userLocation;
     
     if ([[WebServiceManager sharedInstance] hasInternetConnection] && !self.dataFetched) {
@@ -44,8 +43,7 @@
     }
 }
 
-- (NSManagedObjectContext *)managedObjectContext
-{
+- (NSManagedObjectContext *)managedObjectContext {
     if (!_managedObjectContext) {
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         _managedObjectContext = appDelegate.managedObjectContext;
@@ -56,8 +54,7 @@
 
 #pragma mark - Public API
 
-+ (DataManager *)sharedInstance
-{
++ (DataManager *)sharedInstance {
     static DataManager *sharedManager;
     
     @synchronized(self) {
@@ -69,22 +66,19 @@
     return sharedManager;
 }
 
-- (void)parseDictionary:(NSDictionary *)dictionary
-{
+- (void)parseDictionary:(NSDictionary *)dictionary {
     for (NSDictionary *barDictionary in dictionary) {
         [self createBarFromDictionary:barDictionary];
     }
 }
 
-- (NSArray *)bars
-{
+- (NSArray *)bars {
     return [self cachedBars];
 }
 
 #pragma mark - Private API
 
-- (BOOL)barAlreadyAddedByID:(NSString *)barID
-{
+- (BOOL)barAlreadyAddedByID:(NSString *)barID {
     NSArray *bars = [self cachedBars];
     if (bars == nil) return NO;
     
@@ -97,8 +91,7 @@
     return NO;
 }
 
-- (void)createBarFromDictionary:(NSDictionary *)dictionary
-{
+- (void)createBarFromDictionary:(NSDictionary *)dictionary {
     if ([self barAlreadyAddedByID:[JSONNullChecker parseSTRING:dictionary[@"id"]]]) return;
     
     DBBar *dbBar = (DBBar *)[NSEntityDescription insertNewObjectForEntityForName:@"DBBar"
@@ -114,8 +107,7 @@
     [self.managedObjectContext save:nil];
 }
 
-- (NSArray *)cachedBars
-{
+- (NSArray *)cachedBars {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"DBBar" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entityDescription];

@@ -16,25 +16,21 @@
 
 #pragma mark - Setup
 
-- (void)setUp
-{
+- (void)setUp {
     [super setUp];
 }
 
-- (void)tearDown
-{
+- (void)tearDown {
     [super tearDown];
 }
 
 #pragma mark - Tests
 
-- (void)testExample
-{
+- (void)testExample {
     XCTAssert(YES, @"Pass");
 }
 
-- (void)testPerformanceExample
-{
+- (void)testPerformanceExample {
     [self measureBlock:^{}];
 }
 
