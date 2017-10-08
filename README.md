@@ -1,2 +1,5 @@
 # Bars
-Foursquare API Demo
+
+iOS Coding Challenge @Humanity
+
+Project uses Foursquare API.
